@@ -141,7 +141,7 @@ function ShowcaseCard({ showcase, index }: { showcase: typeof SHOWCASES[0], inde
               src={showcase.photo}
               alt={showcase.alt}
               fill
-              className="object-cover"
+              className="object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal saturate-[0.8] hover:saturate-100 transition-all duration-1000 ease-out"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
             {/* Subtle gradient overlay for legibility / mood */}

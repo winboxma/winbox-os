@@ -1,4 +1,4 @@
-import { SpatialBackground } from "@/components/landing/spatial-background";
+// Removed next/dynamic as it's handled in dynamic-components
 import { CaseStudiesSection } from "@/components/landing/case-studies-section";
 import { HeroSection } from "@/components/landing/hero-section";
 import { RevenueSimulator } from "@/components/landing/revenue-simulator";
@@ -12,14 +12,15 @@ import { AiDemo } from "@/components/landing/ai-demo";
 import { SiteFooter } from "@/components/landing/site-footer";
 import { SiteHeader } from "@/components/landing/site-header";
 import { PulseBorder } from "@/components/landing/nervous-system";
-import { AiCopilot } from "@/components/landing/ai-copilot";
 import { EvidenceSection } from "@/components/landing/evidence-section";
-import { GlobeSection } from "@/components/landing/globe-section";
 import { WhoWeBuildForSection } from "@/components/landing/who-we-build-for-section";
 import { MagneticCursor } from "@/components/landing/magnetic-cursor";
 import { MarketingIntelligenceSection } from "@/components/landing/marketing-intelligence-section";
 import { AgencyShowcaseSection } from "@/components/landing/agency-showcase-section";
 import { siteConfig } from "@/lib/site";
+
+// Lazy load WebGL and Heavy Interactive components to prevent hydration errors and boost performance
+import { SpatialBackground, GlobeSection, AiLabSection, AiDock } from "@/components/landing/dynamic-components";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -44,64 +45,65 @@ export default function HomePage() {
     <div className="relative min-h-screen">
       <SpatialBackground />
 
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col gap-y-12 sm:gap-y-20 md:gap-y-32 pb-40">
         <SiteHeader />
 
-        <main>
-          {/* 1. Hero — cinematic entry with 4 floating modules */}
+        <main className="flex flex-col gap-y-24 md:gap-y-40">
+          {/* 1. HERO */}
           <HeroSection />
 
-          {/* 2. Services — 6 growth engines with SVG illustrations */}
+          {/* 2. AI LAB (WINBOX AI Core) */}
+          <AiLabSection />
+
+          {/* 3. SYSTEM MODULES */}
           <ServicesSection />
 
-          {/* 3. Agency Showcase — real photos showing actual agency work */}
-          <AgencyShowcaseSection />
+          {/* 4. REAL BUSINESS RESULTS */}
+          <div className="flex flex-col gap-y-24">
+            <AgencyShowcaseSection />
+            <PulseBorder id="case-studies">
+              <CaseStudiesSection />
+            </PulseBorder>
+            <WhoWeBuildForSection />
+          </div>
 
-          {/* 4. Marketing Intelligence — WhatsApp sim, campaign KPIs, flow */}
-          <MarketingIntelligenceSection />
+          {/* 5. MARKETING INTELLIGENCE */}
+          <div className="flex flex-col gap-y-24">
+            <MarketingIntelligenceSection />
+            <PulseBorder id="simulator">
+              <RevenueSimulator />
+            </PulseBorder>
+          </div>
 
-          {/* 5. Who We Build For — 10 industry grid */}
-          <WhoWeBuildForSection />
+          {/* 6. GROWTH PROTOCOL */}
+          <div className="flex flex-col gap-y-24">
+            <StoryFlowSection />
+            <ProcessSection />
+          </div>
 
-          {/* 6. Story Flow — 4-step method, cinematic scroll + data visuals */}
-          <StoryFlowSection />
-
-          {/* 7. Evidence of Intelligence — live campaign dashboard */}
+          {/* 7. EVIDENCE */}
           <EvidenceSection />
 
-          {/* 8. Revenue Simulator */}
-          <PulseBorder id="simulator">
-            <RevenueSimulator />
-          </PulseBorder>
+          {/* 8. GLOBAL TRUST */}
+          <div className="flex flex-col gap-y-24">
+            <GlobeSection />
+            <TrustSection />
+          </div>
 
-          {/* 9. Why WINBOX — positioning + growth funnel */}
-          <WhyWinboxSection />
-
-          {/* 10. Process — 5-step system */}
-          <ProcessSection />
-
-          {/* 11. Case Studies — 6 industry proof panels */}
-          <PulseBorder id="case-studies">
-            <CaseStudiesSection />
-          </PulseBorder>
-
-          {/* 12. Global Globe — WebGL reach visualization */}
-          <GlobeSection />
-
-          {/* 13. Trust — industry marquee, testimonials, logos */}
-          <TrustSection />
-
-          {/* 14. AI Demo — WhatsApp automation demo */}
+          {/* 9. CONVERSATIONAL AI */}
           <AiDemo />
 
-          {/* 15. Lead Capture — premium contact form */}
-          <LeadCaptureSection />
+          {/* 10. FINAL CTA */}
+          <div className="flex flex-col gap-y-24">
+            <WhyWinboxSection />
+            <LeadCaptureSection />
+          </div>
         </main>
 
         <SiteFooter />
 
         {/* Floating UI layer */}
-        <AiCopilot />
+        <AiDock />
         <MagneticCursor />
       </div>
 

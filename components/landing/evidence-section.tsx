@@ -43,6 +43,7 @@ function SparkLine({ data, color, height = 40 }: { data: number[]; color: string
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        style={{ filter: `drop-shadow(0px 4px 6px ${color}40)` }}
         initial={{ pathLength: 0, opacity: 0 }}
         animate={inView ? { pathLength: 1, opacity: 1 } : {}}
         transition={{ duration: 1.5, ease: "easeInOut" }}
@@ -89,11 +90,11 @@ function CampaignDashboard() {
         {/* Top row: Big KPIs */}
         <div className="grid grid-cols-3 gap-4">
           {[
-            { label: "ROAS", val: 4.1, suffix: "×", prefix: "", color: "#2563EB", data: roasData, up: true },
-            { label: "Leads / mo", val: 131, suffix: "", prefix: "+", color: "#10B981", data: leadsData, up: true },
-            { label: "Cost / Lead", val: 68, suffix: " MAD", prefix: "", color: "#8B5CF6", data: costData, up: false },
+            { label: "ROAS", val: 4.1, suffix: "×", prefix: "", color: "#0066FF", data: roasData, up: true },
+            { label: "Leads / mo", val: 131, suffix: "", prefix: "+", color: "#00C781", data: leadsData, up: true },
+            { label: "Cost / Lead", val: 68, suffix: " MAD", prefix: "", color: "#5E5CE6", data: costData, up: false },
           ].map((kpi) => (
-            <div key={kpi.label} className="glass-panel rounded-[24px] p-5 relative overflow-hidden">
+            <div key={kpi.label} className="glass-panel rounded-[24px] p-5 relative overflow-hidden backdrop-blur-3xl saturate-[1.5]">
               <div className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-1">{kpi.label}</div>
               <div className="text-3xl font-black text-slate-900 tracking-tight">
                 <AnimatedCounter from={0} to={kpi.val} prefix={kpi.prefix} suffix={kpi.suffix} duration={2} />
@@ -116,11 +117,11 @@ function CampaignDashboard() {
           <div className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 mb-5">Conversion Funnel · This Month</div>
           <div className="space-y-3">
             {[
-              { label: "Impressions", val: "124,800", pct: 100, color: "#2563EB" },
-              { label: "Clicks → Landing", val: "8,736", pct: 70, color: "#6366F1" },
-              { label: "Lead Forms Filled", val: "2,186", pct: 50, color: "#8B5CF6" },
+              { label: "Impressions", val: "124,800", pct: 100, color: "#0066FF" },
+              { label: "Clicks → Landing", val: "8,736", pct: 70, color: "#5E5CE6" },
+              { label: "Lead Forms Filled", val: "2,186", pct: 50, color: "#8E8E93" },
               { label: "Qualified by AI", val: "874", pct: 35, color: "#06B6D4" },
-              { label: "Booked / Converted", val: "262", pct: 22, color: "#10B981" },
+              { label: "Booked / Converted", val: "262", pct: 22, color: "#00C781" },
             ].map((stage, i) => (
               <div key={stage.label} className="flex items-center gap-4">
                 <div className="w-28 flex-shrink-0 text-[11px] font-semibold text-slate-500">{stage.label}</div>
@@ -178,9 +179,9 @@ function CampaignDashboard() {
             </div>
             <div className="space-y-3">
               {[
-                { label: "Meta Ads", pct: 42, color: "#2563EB" },
-                { label: "Google", pct: 28, color: "#6366F1" },
-                { label: "WhatsApp", pct: 19, color: "#10B981" },
+                { label: "Meta Ads", pct: 42, color: "#0066FF" },
+                { label: "Google", pct: 28, color: "#5E5CE6" },
+                { label: "WhatsApp", pct: 19, color: "#00C781" },
                 { label: "Organic", pct: 11, color: "#06B6D4" },
               ].map((ch, i) => (
                 <div key={ch.label} className="flex items-center gap-3">
@@ -210,17 +211,17 @@ export function EvidenceSection() {
   const proofStats = [
     {
       metric: "+320%", label: "Qualified Lead Growth", caption: "Travel, Real Estate & Clinic campaigns",
-      color: "#2563EB", icon: TrendingUp, result: "3× more inbound pipeline within 90 days",
+      color: "#0066FF", icon: TrendingUp, result: "3× more inbound pipeline within 90 days",
       checks: ["AI-driven targeting", "WhatsApp qualification", "CRM auto-routing"]
     },
     {
       metric: "-28%", label: "Cost per Acquisition", caption: "Through creative testing & funnel optimization",
-      color: "#10B981", icon: TrendingDown, result: "Consistent ROAS improvement every sprint",
+      color: "#00C781", icon: TrendingDown, result: "Consistent ROAS improvement every sprint",
       checks: ["Multi-variant creative tests", "Conversion-first landing pages", "Retargeting sequences"]
     },
     {
       metric: "3×", label: "Faster Lead Response", caption: "WhatsApp AI qualifying 24/7 automatically",
-      color: "#8B5CF6", icon: Zap, result: "Zero missed inquiries, auto-booked in CRM",
+      color: "#5E5CE6", icon: Zap, result: "Zero missed inquiries, auto-booked in CRM",
       checks: ["Instant AI response", "Smart qualification flow", "Auto-appointment booking"]
     },
   ];

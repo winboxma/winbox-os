@@ -36,8 +36,8 @@ function createArc(
 const GLOBE_RADIUS = 1;
 
 const markers = [
-  { lat: 34.0, lng: -6.8, label: "Morocco", color: "#2563EB" },
-  { lat: 12.4, lng: -2.0, label: "West Africa", color: "#8B5CF6" },
+  { lat: 34.0, lng: -6.8, label: "Morocco", color: "#0066FF" },
+  { lat: 12.4, lng: -2.0, label: "West Africa", color: "#5E5CE6" },
   { lat: 48.8, lng: 2.3, label: "Europe", color: "#10B981" },
   { lat: 25.2, lng: 55.3, label: "Middle East", color: "#06B6D4" },
 ];
@@ -86,12 +86,12 @@ function GlobeArc({ points, color, delay = 0 }: { points: THREE.Vector3[]; color
       ref={ref}
       points={points}
       color={color}
-      lineWidth={1}
+      lineWidth={1.5}
       transparent
-      opacity={0.5}
+      opacity={0.6}
       dashed
-      dashSize={0.05}
-      gapSize={0.03}
+      dashSize={0.06}
+      gapSize={0.04}
     />
   );
 }
@@ -129,22 +129,21 @@ function RotatingGlobe() {
     <group ref={groupRef}>
       {/* Globe sphere */}
       <Sphere args={[GLOBE_RADIUS, 64, 64]}>
-        <meshPhongMaterial
-          color="#EEF2FF"
+        <meshStandardMaterial
+          color="#FFFFFF"
+          roughness={0.2}
+          metalness={0.1}
           transparent
-          opacity={0.85}
-          wireframe={false}
-          shininess={30}
-          specular={new THREE.Color("#2563EB")}
+          opacity={0.9}
         />
       </Sphere>
 
       {/* Wireframe overlay */}
       <Sphere args={[GLOBE_RADIUS + 0.001, 32, 32]}>
         <meshBasicMaterial
-          color="#2563EB"
+          color="#0066FF"
           transparent
-          opacity={0.04}
+          opacity={0.02}
           wireframe
         />
       </Sphere>
@@ -152,9 +151,9 @@ function RotatingGlobe() {
       {/* Atmosphere glow */}
       <Sphere args={[GLOBE_RADIUS + 0.06, 64, 64]}>
         <meshBasicMaterial
-          color="#2563EB"
+          color="#0066FF"
           transparent
-          opacity={0.03}
+          opacity={0.02}
           side={THREE.BackSide}
         />
       </Sphere>
@@ -180,10 +179,10 @@ export function GlobeCanvas() {
       dpr={[1, 2]}
     >
       {/* Lighting */}
-      <ambientLight intensity={1.5} color="#EEF2FF" />
-      <pointLight position={[4, 4, 4]} intensity={2} color="#2563EB" />
-      <pointLight position={[-4, -2, -4]} intensity={1} color="#8B5CF6" />
-      <pointLight position={[0, -4, 2]} intensity={0.5} color="#06B6D4" />
+      <ambientLight intensity={1.5} color="#FFFFFF" />
+      <pointLight position={[4, 4, 4]} intensity={1.5} color="#0066FF" />
+      <pointLight position={[-4, -2, -4]} intensity={1} color="#5E5CE6" />
+      <pointLight position={[0, -4, 2]} intensity={0.5} color="#8E8E93" />
 
       <RotatingGlobe />
     </Canvas>

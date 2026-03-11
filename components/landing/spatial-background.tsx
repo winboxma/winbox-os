@@ -10,44 +10,44 @@ function AuroraField() {
 
   useFrame((state) => {
     if (!meshRef.current) return;
-    meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
-    meshRef.current.rotation.y = Math.cos(state.clock.elapsedTime * 0.3) * 0.1;
+    meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.1) * 0.05;
+    meshRef.current.rotation.y = Math.cos(state.clock.elapsedTime * 0.15) * 0.05;
   });
 
   return (
     <group>
-      <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
-        <Sphere args={[1.5, 64, 64]} position={[-2, 1, -2]}>
+      <Float speed={1} rotationIntensity={0.2} floatIntensity={0.3}>
+        <Sphere args={[1.8, 64, 64]} position={[-2, 1, -2]}>
           <MeshDistortMaterial
-            color="#2563EB"
-            speed={3}
-            distort={0.4}
+            color="#0066FF"
+            speed={2}
+            distort={0.3}
             radius={1}
-            opacity={0.08}
+            opacity={0.04}
             transparent
           />
         </Sphere>
       </Float>
-      <Float speed={1.5} rotationIntensity={0.8} floatIntensity={0.8}>
-        <Sphere args={[2, 64, 64]} position={[2, -1, -3]}>
+      <Float speed={0.8} rotationIntensity={0.3} floatIntensity={0.4}>
+        <Sphere args={[2.5, 64, 64]} position={[2, -1, -3]}>
+          <MeshDistortMaterial
+            color="#5E5CE6"
+            speed={1.5}
+            distort={0.4}
+            radius={1}
+            opacity={0.03}
+            transparent
+          />
+        </Sphere>
+      </Float>
+      <Float speed={1.2} rotationIntensity={0.1} floatIntensity={0.6}>
+        <Sphere args={[1.5, 64, 64]} position={[0, -2, -1]}>
           <MeshDistortMaterial
             color="#8B5CF6"
             speed={2}
-            distort={0.5}
+            distort={0.2}
             radius={1}
-            opacity={0.06}
-            transparent
-          />
-        </Sphere>
-      </Float>
-      <Float speed={2.5} rotationIntensity={0.3} floatIntensity={1.2}>
-        <Sphere args={[1.2, 64, 64]} position={[0, -2, -1]}>
-          <MeshDistortMaterial
-            color="#06B6D4"
-            speed={4}
-            distort={0.3}
-            radius={1}
-            opacity={0.05}
+            opacity={0.02}
             transparent
           />
         </Sphere>
@@ -57,15 +57,15 @@ function AuroraField() {
 }
 
 function Particles() {
-  const count = 40;
+  const count = 30; // Reduced count
   const mesh = useRef<THREE.Points>(null);
   
   const particles = useMemo(() => {
     const temp = [];
     for (let i = 0; i < count; i++) {
-      const x = (Math.random() - 0.5) * 10;
-      const y = (Math.random() - 0.5) * 10;
-      const z = (Math.random() - 0.5) * 5;
+      const x = (Math.random() - 0.5) * 12;
+      const y = (Math.random() - 0.5) * 12;
+      const z = (Math.random() - 0.5) * 6;
       temp.push(x, y, z);
     }
     return new Float32Array(temp);
@@ -73,8 +73,8 @@ function Particles() {
 
   useFrame((state) => {
     if (!mesh.current) return;
-    mesh.current.rotation.y = state.clock.elapsedTime * 0.05;
-    mesh.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.02) * 0.1;
+    mesh.current.rotation.y = state.clock.elapsedTime * 0.02; // Very slow
+    mesh.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.01) * 0.05;
   });
 
   return (
@@ -89,10 +89,10 @@ function Particles() {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.015}
-        color="#2563EB"
+        size={0.01}
+        color="#0066FF"
         transparent
-        opacity={0.3}
+        opacity={0.15}
         sizeAttenuation
       />
     </points>
@@ -101,7 +101,7 @@ function Particles() {
 
 export function SpatialBackground() {
   return (
-    <div className="fixed inset-0 -z-10 bg-[#F7F8FC] pointer-events-none overflow-hidden">
+    <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden" style={{ background: "var(--bg-page)" }}>
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50 }}
         dpr={[1, 2]}
@@ -112,7 +112,10 @@ export function SpatialBackground() {
         <AuroraField />
         <Particles />
       </Canvas>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#F7F8FC_100%)] opacity-40" />
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-50"
+        style={{ background: "radial-gradient(circle at center, transparent 0%, var(--bg-page) 100%)" }}
+      />
     </div>
   );
 }

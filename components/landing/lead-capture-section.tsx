@@ -17,7 +17,7 @@ export function LeadCaptureSection() {
               System Initialization
             </div>
             <h2 className="text-4xl lg:text-7xl font-black text-white mb-8 tracking-[-0.04em] leading-tight">
-              Ready to Architect <span className="text-blue-500">Your Growth?</span>
+              Ready to Architect <span className="text-ai-blue">Your Growth?</span>
             </h2>
             <p className="text-slate-400 text-xl font-medium mb-12 max-w-lg leading-relaxed">
               Deploy a high-performance Growth OS in your business. Book a strategy audit to identify your scaling potential.
@@ -35,14 +35,14 @@ export function LeadCaptureSection() {
               </div>
               
               <div className="flex items-center gap-6">
-                <div className="w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-blue-500">
-                  <ShieldCheck className="h-7 w-7" />
-                </div>
-                <div>
-                  <p className="font-black text-white text-lg tracking-tight">Enterprise Infrastructure</p>
-                  <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest">ISO-Grade Data Protocols</p>
-                </div>
-              </div>
+                <div className="w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-ai-blue">
+                   <ShieldCheck className="h-7 w-7" />
+                 </div>
+                 <div>
+                   <p className="font-black text-white text-lg tracking-tight">Enterprise Infrastructure</p>
+                   <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest">ISO-Grade Data Protocols</p>
+                 </div>
+               </div>
             </div>
 
             <div className="mt-16 pt-12 border-t border-slate-800">
@@ -89,10 +89,24 @@ export function LeadCaptureSection() {
               </div>
 
               <div className="space-y-3">
+                <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Monthly Revenue (MAD)</label>
+                <select 
+                  defaultValue=""
+                  className="w-full bg-slate-800/50 border border-slate-700 rounded-2xl px-6 py-4 text-sm text-slate-400 focus:outline-none focus:border-ai-blue transition-all font-medium appearance-none"
+                >
+                  <option value="" disabled>Select Range</option>
+                  <option value="under50k">&lt; 50,000 MAD</option>
+                  <option value="50k-150k">50,000 - 150,000 MAD</option>
+                  <option value="150k-500k">150,000 - 500,000 MAD</option>
+                  <option value="500k+">500,000+ MAD</option>
+                </select>
+              </div>
+
+              <div className="space-y-3">
                 <label className="text-[10px] font-black uppercase tracking-widest text-slate-500 ml-2">Growth Objectives</label>
                 <select 
                   defaultValue=""
-                  className="w-full bg-slate-800/50 border border-slate-700 rounded-2xl px-6 py-4 text-sm text-slate-400 focus:outline-none focus:border-blue-500 transition-all font-medium appearance-none"
+                  className="w-full bg-slate-800/50 border border-slate-700 rounded-2xl px-6 py-4 text-sm text-slate-400 focus:outline-none focus:border-ai-blue transition-all font-medium appearance-none"
                 >
                   <option value="" disabled>Select Primary Goal</option>
                   <option value="leads">Scale Lead Generation</option>
@@ -102,8 +116,8 @@ export function LeadCaptureSection() {
                 </select>
               </div>
 
-              <button className="w-full py-6 rounded-3xl bg-blue-600 text-white font-black uppercase tracking-[0.2em] text-xs hover:bg-blue-500 transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-blue-500/20">
-                Deploy Strategy Audit
+              <button className="w-full py-6 rounded-3xl bg-ai-blue text-white font-black uppercase tracking-[0.2em] text-xs hover:bg-blue-600 transition-all hover:scale-[1.02] active:scale-95 shadow-xl shadow-ai-blue/20">
+                Start Your Growth System
               </button>
               
               <div className="flex items-center justify-center gap-4 text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 mt-6">

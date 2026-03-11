@@ -160,7 +160,7 @@ export function CampaignIntelligenceIllustration() {
         alt="Performance Marketing Dashboard Analytics"
         fill
         sizes="(max-width: 1024px) 100vw, 50vw"
-        className="object-cover transition-transform duration-1000 ease-out group-hover:scale-[1.03]"
+        className="object-cover opacity-90 mix-blend-luminosity hover:mix-blend-normal saturate-[0.8] hover:saturate-100 transition-all duration-1000 ease-out group-hover:scale-[1.03]"
       />
       {/* Subtle overlay to blend into the Neo-light theme */}
       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent pointer-events-none" />
