@@ -1,0 +1,54 @@
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes dashFlow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.float-y {
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.pulse {
+  animation: pulse 5s ease-in-out infinite;
+}
+
+.dash-flow {
+  stroke-dasharray: 6 10;
+  animation: dashFlow 1.4s linear infinite;
+}
+
+.logo-marquee {
+  animation: marquee 18s linear infinite;
+}
