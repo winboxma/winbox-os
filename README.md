@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # WINBOX Landing Page
 
 Premium AI-powered digital marketing landing page built with:
@@ -22,3 +23,6 @@ npm run dev
 npm run build
 npm start
 ```
+=======
+WINBOX AI OS
+>>>>>>> c9952fc5b470e12a070363feb4f16a856bf1d637
