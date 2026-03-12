@@ -1,4 +1,3 @@
-cat > next.config.ts << 'EOF'
 import type { NextConfig } from "next";
 
 const securityHeaders = [
@@ -58,4 +57,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-EOF
