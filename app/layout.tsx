@@ -1,19 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 
 const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
   variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap"
-});
-
-const geist = Geist({
-  variable: "--font-geist",
-  subsets: ["latin"],
-  display: "swap"
 });
 
 export const metadata: Metadata = {
@@ -21,7 +15,18 @@ export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
   alternates: {
-    canonical: "/"
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     type: "website",
@@ -29,25 +34,25 @@ export const metadata: Metadata = {
     title: siteConfig.title,
     description: siteConfig.description,
     siteName: siteConfig.name,
-    url: siteConfig.url
+    url: siteConfig.url,
   },
   twitter: {
     card: "summary_large_image",
     title: siteConfig.title,
-    description: siteConfig.description
-  }
+    description: siteConfig.description,
+  },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#f8fafc"
+  themeColor: "#f8fafc",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${geist.variable}`}>
-      <body>{children}</body>
+    <html lang="fr" className={inter.variable}>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
