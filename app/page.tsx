@@ -1,3 +1,4 @@
+cat > app / page.tsx << 'EOF'
 import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/landing/hero-section";
 import { SiteHeader } from "@/components/landing/site-header";
@@ -157,3 +158,4 @@ export default function HomePage() {
     </div>
   );
 }
+EOF
