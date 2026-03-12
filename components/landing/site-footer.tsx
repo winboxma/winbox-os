@@ -1,93 +1,138 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Instagram, Facebook, Linkedin } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export function SiteFooter() {
-  const [mounted, setMounted] = useState(false);
+  const [year, setYear] = useState("2026");
 
   useEffect(() => {
-    setMounted(true);
+    setYear(String(new Date().getFullYear()));
   }, []);
 
+  const navItems = [
+    { label: "Services", href: "#services" },
+    { label: "AI Lab", href: "#ai-lab" },
+    { label: "Proof", href: "#proof" },
+    { label: "Process", href: "#process" },
+    { label: "Contact", href: "#contact" },
+  ];
+
+  const socialLinks = [
+    { icon: Instagram, href: "https://www.instagram.com/winbox.ma/" },
+    { icon: Facebook, href: "https://web.facebook.com/Winbox.m" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/yassineraha/" },
+  ];
+
   return (
-    <footer className="bg-gradient-to-b from-[#071226] to-[#020617] relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 py-16 relative z-10">
-        <div className="grid md:grid-cols-4 gap-10">
-          
-          {/* Column 1 - Brand */}
-          <div className="flex flex-col items-start">
-            <Link href="/" className="text-3xl font-black text-white tracking-tighter mb-4 inline-block">
+    <footer className="bg-gradient-to-b from-[#071226] to-[#020617] text-white border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-6 py-20">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+          {/* Brand */}
+          <div>
+            <Link href="/" className="text-4xl font-black text-white">
               WINBOX<span className="text-blue-500">.</span>
             </Link>
-            <p className="text-slate-300 text-sm leading-relaxed mb-6">
-              The Digital Growth Operating System.<br/>
-              Engineering the future of business acceleration with modular AI intelligence.
+
+            <p className="mt-6 text-lg font-semibold text-white">
+              The Digital Growth Operating System.
             </p>
-            <div className="bg-slate-800 text-slate-300 px-4 py-1 rounded-full text-sm font-medium">
+
+            <p className="mt-4 text-white/80">
+              We design premium growth systems combining branding,
+              AI automation, digital performance and conversion infrastructure.
+            </p>
+
+            <div className="mt-6 px-4 py-2 border border-white/15 rounded-full inline-flex items-center gap-2 text-sm">
+              <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
               Founder: Yassine Raha
             </div>
-          </div>
 
-          {/* Column 2 - Navigation */}
-          <div>
-            <h4 className="text-white font-semibold mb-6">Navigation</h4>
-            <div className="flex flex-col gap-4">
-              {['Services', 'AI Lab', 'Proof', 'Process', 'Contact'].map((item) => (
-                <Link 
-                  key={item} 
-                  href={`#${item.toLowerCase().replace(' ', '-')}`} 
-                  className="text-slate-400 hover:text-white transition text-sm font-medium"
-                >
-                  {item}
+            <div className="flex gap-4 mt-6">
+              {socialLinks.map(({ icon: Icon, href }, i) => (
+                <Link key={i} href={href} target="_blank">
+                  <Icon className="w-5 h-5 text-white/80 hover:text-white" />
                 </Link>
               ))}
             </div>
           </div>
 
-          {/* Column 3 - Contact */}
+          {/* Navigation */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Contact</h4>
+            <h4 className="text-sm uppercase font-semibold mb-6">Navigation</h4>
+
+            <div className="flex flex-col gap-3">
+              {navItems.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="text-white/80 hover:text-white"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-sm uppercase font-semibold mb-6">Contact</h4>
+
             <div className="flex flex-col gap-4">
-              <Link href="mailto:contact@winbox.ma" className="flex items-center gap-3 text-slate-300 text-sm hover:text-white transition group">
-                <Mail className="h-4 w-4 text-blue-500 group-hover:scale-110 transition-transform" />
+
+              <Link href="mailto:contact@winbox.ma" className="flex items-center gap-3 text-white/85">
+                <Mail size={18} />
                 contact@winbox.ma
               </Link>
-              <Link href="tel:+212669694945" className="flex items-center gap-3 text-slate-300 text-sm hover:text-white transition group">
-                <Phone className="h-4 w-4 text-blue-500 group-hover:scale-110 transition-transform" />
+
+              <Link href="tel:+212669694945" className="flex items-center gap-3 text-white/85">
+                <Phone size={18} />
                 +212 6 69 69 49 45
               </Link>
+
             </div>
           </div>
 
-          {/* Column 4 - Location */}
+          {/* Location */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Nexus Base</h4>
-            <div className="flex items-start gap-3 text-slate-300 text-sm">
-              <MapPin className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" />
-              <span className="leading-relaxed">
-                Rabat & Salé<br/>
-                Capital Region — Morocco
-              </span>
+            <h4 className="text-sm uppercase font-semibold mb-6">Location</h4>
+
+            <div className="flex items-start gap-3 text-white/85">
+              <MapPin size={18} />
+
+              <div>
+                <p className="font-semibold text-white">
+                  Rabat & Salé
+                </p>
+
+                <p className="text-white/60 text-sm">
+                  Capital Region — Morocco
+                </p>
+              </div>
             </div>
           </div>
 
         </div>
 
-        {/* Divider and Bottom Bar */}
-        <div className="border-t border-slate-800 mt-12 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-500 text-sm">
-              © {mounted ? new Date().getFullYear() : "2026"} WINBOX OS. Deployed globally.
-            </p>
-            <div className="flex gap-6">
-              <Link href="/privacy" className="text-slate-500 text-sm hover:text-white transition">Privacy</Link>
-              <Link href="/terms" className="text-slate-500 text-sm hover:text-white transition">Terms</Link>
-              <Link href="/security" className="text-slate-500 text-sm hover:text-white transition">Security</Link>
-            </div>
+        {/* Bottom */}
+
+        <div className="border-t border-white/10 mt-16 pt-6 flex flex-col md:flex-row justify-between items-center">
+
+          <p className="text-white/60 text-sm">
+            © {year} WINBOX OS. Deployed globally.
+          </p>
+
+          <div className="flex gap-6 text-white/60 text-sm">
+            <Link href="/privacy" className="hover:text-white">Privacy</Link>
+            <Link href="/terms" className="hover:text-white">Terms</Link>
+            <Link href="/security" className="hover:text-white">Security</Link>
           </div>
+
         </div>
+
       </div>
     </footer>
   );
