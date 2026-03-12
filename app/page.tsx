@@ -1,4 +1,3 @@
-cat > app / page.tsx << 'EOF'
 import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/landing/hero-section";
 import { SiteHeader } from "@/components/landing/site-header";
@@ -12,7 +11,7 @@ const CaseStudiesSection = dynamic(
 
 const RevenueSimulator = dynamic(
   () => import("@/components/landing/revenue-simulator").then((mod) => mod.RevenueSimulator),
-  { ssr: false, loading: () => null }
+  { loading: () => null }
 );
 
 const LeadCaptureSection = dynamic(
@@ -47,7 +46,7 @@ const TrustSection = dynamic(
 
 const AiDemo = dynamic(
   () => import("@/components/landing/ai-demo").then((mod) => mod.AiDemo),
-  { ssr: false, loading: () => null }
+  { loading: () => null }
 );
 
 const SiteFooter = dynamic(
@@ -72,12 +71,12 @@ const WhoWeBuildForSection = dynamic(
 
 const MarketingIntelligenceSection = dynamic(
   () => import("@/components/landing/marketing-intelligence-section").then((mod) => mod.MarketingIntelligenceSection),
-  { ssr: false, loading: () => null }
+  { loading: () => null }
 );
 
 const AgencyShowcaseSection = dynamic(
   () => import("@/components/landing/agency-showcase-section").then((mod) => mod.AgencyShowcaseSection),
-  { ssr: false, loading: () => null }
+  { loading: () => null }
 );
 
 const jsonLd = {
@@ -158,4 +157,3 @@ export default function HomePage() {
     </div>
   );
 }
-EOF
