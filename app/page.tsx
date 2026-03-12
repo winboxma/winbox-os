@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { HeroSection } from "@/components/landing/hero-section";
 import { SiteHeader } from "@/components/landing/site-header";
 import { siteConfig } from "@/lib/site";
-import { SpatialBackground, GlobeSection, AiLabSection, AiDock, MagneticCursor } from "@/components/landing/dynamic-components";
+import { SpatialBackground, GlobeSection, AiLabSection, AiDock } from "@/components/landing/dynamic-components";
 
 const CaseStudiesSection = dynamic(
   () => import("@/components/landing/case-studies-section").then((mod) => mod.CaseStudiesSection),
@@ -147,7 +147,6 @@ export default function HomePage() {
 
         <SiteFooter />
         <AiDock />
-        <MagneticCursor />
       </div>
 
       <script
